@@ -48,8 +48,14 @@ function validateForm() {
   validateGeneric("#first-name", "You must enter a first name");
   validateGeneric("#last-name", "You must enter a last name");
   validateGeneric("#address", "You must enter an address");
+  validateGeneric("#city", "You must enter a city");
+  validateGeneric("#zip", "You must enter a city");
 
   validateState("#state", "You must enter a valid two character state code, e.g., UT");
+  validateEmail("#email", "You must enter a valid email.")
+  validatePhoneNumber("#phone", "You must enter a valid phone number.")
+
+
 
   //note, to validate the group, just passing in id of one of them, we will use name to check status of group
   validateCheckboxGroup("#newspaper", "you must select at least one!");
@@ -64,6 +70,8 @@ function validateGeneric(id, msg){
     valid=true;
   }
   setElementValidity(id, valid, msg);
+
+  return valid;
 }
 
 function validateState(id, msg){
@@ -76,13 +84,39 @@ function validateState(id, msg){
     valid=true;
   }
   setElementValidity(id, valid, msg);
+
+  return valid;
+}
+
+function validateEmail(id, msg) {
+  var regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+  var $el = $(id);
+  let valid=regex.exec($el.val());
+
+  setElementValidity(id, valid, msg);
+
+  return valid;
+}
+
+
+function validatePhoneNumber(id, msg) {
+  var regex = /^(1?(-?\d{3})-?)?(\d{3})(-?\d{4})$/
+
+  var $el = $(id);
+  let valid = regex.test($el.val());
+
+  $el.mask("000-000-0000")
+
+  setElementValidity(id, valid, msg);
+
+  return valid;
 }
 
 function validateCheckboxGroup(fieldName, message) {
   let valid=false;
 
-  //TODO
-  //Validate whether any of the checkboxes are checked. set 'valid' to true if checked
+
   var placesFound = $(".whereFound input:checkbox");
   for (var checkbox of placesFound) { validateCheckbox(checkbox) }
 

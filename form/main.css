@@ -1,0 +1,207 @@
+/* CSS HEX */
+:root {
+  --oxford-blue: #0a122aff;
+  --cadet: #5c6b73ff;
+  --cultured: #fbfaf8ff;
+  --bone: #e7decdff;
+  --international-orange-engineering: #ba1200ff;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  background-color: var(--bone);
+  font-family: didot;
+  color: var(--cadet)
+}
+
+form {
+  width: 600px;
+  margin: auto;
+}
+
+form label {
+  font-size: 20px;
+}
+
+form input {
+  background-color: var(--cultured);
+  border-style: solid;
+  font-size: 15px;
+  font-family: Arial;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  align-content: center;
+}
+
+.flex {
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.flex li {
+  display: flex;
+  flex-basis:2;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  padding: 5px 5px;
+}
+
+
+.flex li label {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.flex li input {
+  flex-grow: 1;
+}
+
+/* Customize the label (the container) */
+.checkContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-style: italic;
+}
+
+/* Hide the browser's default checkbox */
+.checkContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  transition: background-color 0.2s;
+}
+
+/* On mouse-over, add a grey background color */
+.checkContainer:hover input[type="checkbox"] ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+
+/* Style the checkmark/indicator */
+.checkContainer .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 7px;
+  height: 14px;
+  border: solid var(--international-orange-engineering);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.flex .whereFound {
+  display: flex;
+  padding-bottom:25px;
+  justify-content: space-between;
+}
+
+.flex > li:nth-last-child(2){
+  display: block;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.flex > li:nth-last-child(2) label{
+  margin-bottom: 10px;
+}
+
+.flex > li:nth-last-child(2) textarea{
+  margin-top:7px;
+  padding:4px;
+  width: 100%;
+  background-color: var(--cultured);
+  border-style: solid;
+  border-radius: 7px;
+  height: 200px;
+  resize: none;
+  font-family: didot;
+  font-weight: lighter;
+}
+
+.flex > li:nth-last-child(1) {
+  display: inline;
+}
+
+#formSubmit {
+  width: 100%;
+  height: 40px;
+  background-color: var(--cadet);
+  color: var(--bone);
+  border-style: none;
+  text-transform: uppercase;
+  font-family: didot;
+  font-size: 17px;
+  border-radius: 7px;
+  transition: transform .2s, background-color, 1s, color 1s;
+}
+
+#formSubmit:hover {
+  transform: scale(1.1);
+  background-color: var(--international-orange-engineering);
+  color: var(--cultured);
+}
+
+.errorMsg {
+  color: var(--international-orange-engineering);
+  flex-grow: 0;
+  display:none;
+  width:100%;
+  text-align: right;
+  transition: display 1s;
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Visitor Form</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Visitor form</h1>
+    <div class="successMsg hidden">
+      Thank you for logging your visit!
+    </div>
+    <form id="myform">
+      <ul class="flex">
+        <li class="section-display">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first-name" placeholder="Enter your first name here">
+          <div class="errorMsg">First Name is Required</div>
+        </li>
+        <li>
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" placeholder="Enter your last name here">
+          <div class="errorMsg">Last Name is Required</div>
+        </li>
+        <li>
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" placeholder="Enter your address here">
+          <div class="errorMsg"></div>
+        </li>
+        <li>
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" placeholder="Enter your city here" required>
+          <div class="errorMsg"></div>
+        </li>
+        <li>
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" placeholder="Enter your state here">
+          <div class="errorMsg">Please enter a two character state code</div>
+        </li>
+        <li>
+          <label for="zip">Zip</label>
+          <input id="zip" name="zip" type="text" placeholder="Enter a zip code here">
+          <div class="errorMsg">You must enter a valid Zip Code</div>
+        </li>
+        <li>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email here">
+          <div class="errorMsg">You must enter a valid email</div>
+        </li>
+        <li>
+          <label for="phone">Phone</label>
+          <input type="phone" id="phone" placeholder="Enter your phone here">
+          <div class="errorMsg">You must enter a valid phone number</div>
+        </li>
+        <li>
+          <h2>How did you find my page</h2>
+        </li>
+        <div class="whereFound">
+          <li>
+            <label class="checkContainer" for="google">
+            <input type="checkbox" id='google' name='find-page' value="google">
+            <span class="checkmark"></span>
+            Google Search</label>
+          </li>
+          <li>
+            <label class="checkContainer" for="friend">
+            <input type="checkbox" id='friend' name='find-page' value="friend">
+            <span class="checkmark"></span>
+            Friend</label>
+          </li>
+          <li>
+            <label class="checkContainer" for="newspaper">
+            <input type="checkbox" id='newspaper' name='find-page' value="newspaper">
+            <span class="checkmark"></span>
+            News Paper</label>
+            <div class="errorMsg">You must check at least one</div>
+          </li>
+        </div>
+        <li>
+          <label for="comment">Comments</label><br>
+          <textarea rows="4" id="comment" placeholder="Enter your comments here"></textarea>
+        </li>
+
+        <li>
+          <button id="formSubmit" type="submit">Send</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/validation.js"></script>
+  <script>
+    $(document).ready(function () {
+      initValidation("#myform");
+
+    });
+  </script>
+</body>
+
+</html>

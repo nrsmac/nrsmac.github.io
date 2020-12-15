@@ -39,8 +39,8 @@ function initValidation(formName) {
       $form.addClass("hidden");
       $(".successMsg").removeClass("hidden")
     }
-    submitForm();
-    showList();
+    // submitForm();
+    // showList();
 
   });
 }

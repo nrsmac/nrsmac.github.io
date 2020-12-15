@@ -41,10 +41,11 @@ function submitForm() {
           $("#zip").val(),
           $("#email").val(),
           $("#phone").val(),
-          getWhereFound()
-        ));//TODO Just re
+          getWhereFound()))
         renderTable(table, visitors);
         showList();
+      } else {
+        validateForm();
       }
 }
 
@@ -88,4 +89,19 @@ function deleteVisitor(id) {
 }
 
 function editVisitor(id) {
+  let visitor = findVisitor(id);
+
+  showForm();
+
+  $("#first-name").val(visitor.firstName);
+  $("#last-name").val(visitor.lastName);
+  $("#address").val(visitor.address);
+  $("#city").val(visitor.city);
+  $("#state").val(visitor.state);
+  $("#zip").val(visitor.zip);
+  $("#email").val(visitor.email);
+  $("#phone").val(visitor.phone);
+
+  modelDeleteVisitor(id)
+
 }

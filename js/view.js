@@ -31,7 +31,7 @@ function closeBtnClicked() {
 }
 
 function renderTable(containerId, visitors) { //renders table from global visitors object array
-  $(`tr`).remove() //clears out the table TODO: make sure this doesnt remove th
+  $("tr:not(thead tr)").remove() //clears out the table
   visitors.forEach((item, i) => {
     if ($(`#item${item.id}`).length == 0) {
       let currentRow = containerId.append(`<tr id="item${item.id}""></tr>`);
@@ -39,7 +39,10 @@ function renderTable(containerId, visitors) { //renders table from global visito
           <td>${item.getName()}</td>
           <td>${item.getAddress()}</td>
           <td>${item.getContact()}</td>
-          <td><a href="#", onClick="deleteVisitor(${item.id})">Delete</a></td>`
+          <td class=".actionsColumn">
+            <a href="#visitor-section-container", onClick="deleteVisitor(${item.id})">Delete</a>
+            <a href="#visitor-section-container", onClick="editVisitor(${item.id})">Edit</a>
+          </td>`
         )
       }
       });

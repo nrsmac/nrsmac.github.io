@@ -383,6 +383,10 @@ table td {
   text-align: left;
 }
 
+.actionsColumn {
+  text-align: center;
+}
+
 
 @media only screen and (max-width: 1000px) {
   #main {

@@ -1,6 +1,6 @@
-/* Form Validation Example */
+/* Form Validation*/
 /* Personal Web Site-Visitor Form Validation */
-/* See comments with TODO for code you need to implement */
+
 const stateAbbreviations = [
   'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
   'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
@@ -22,8 +22,9 @@ function initValidation(formName) {
     //than the whole form at once
   });
 
-  $("#myform").submit(function(event){
-    $form = $("#myform");
+  $form.submit(function(event){
+
+    let $form = $(this);
     formEl=$form.get(0);
 
     event.preventDefault();  //prevent default browser submit
@@ -38,22 +39,29 @@ function initValidation(formName) {
       $form.addClass("hidden");
       $(".successMsg").removeClass("hidden")
     }
-
+    // submitForm();
+    // showList();
 
   });
 }
 
 function validateForm() {
 
-  validateGeneric("#first-name", "You must enter a first name");
-  validateGeneric("#last-name", "You must enter a last name");
-  validateGeneric("#address", "You must enter an address");
-  validatePhoneNumber('#phone', "You must enter a valid phone number");
+  let isValid = false;
 
-  validateState("#state", "You must enter a valid two character state code, e.g., UT");
+  isValid = isValid && validateGeneric("#first-name", "You must enter a first name");
+  isValid = isValid && validateGeneric("#last-name", "You must enter a last name");
+  isValid = isValid && validateGeneric("#address", "You must enter an address");
+  isValid =isValid && validateGeneric("#city", "You must enter a city");
+  isValid = validateGeneric("#zip", "You must enter a city");
+
+  isValid = isValid &&  validateState("#state", "You must enter a valid two character state code, e.g., UT");
+  isValid = isValid && validateEmail("#email", "You must enter a valid email.")
+  isValid = isValid && validatePhoneNumber("#phone", "You must enter a valid phone number.")
 
   //note, to validate the group, just passing in id of one of them, we will use name to check status of group
-  validateCheckboxGroup("#newspaper", "you must select at least one!");
+  isValid = isValid && validateCheckboxGroup("#newspaper", "you must select at least one!");
+  return isValid;
 
 }
 function validateGeneric(id, msg){
@@ -65,6 +73,8 @@ function validateGeneric(id, msg){
     valid=true;
   }
   setElementValidity(id, valid, msg);
+
+  return valid;
 }
 
 function validateState(id, msg){
@@ -77,27 +87,43 @@ function validateState(id, msg){
     valid=true;
   }
   setElementValidity(id, valid, msg);
+
+  return valid;
 }
 
+function validateEmail(id, msg) {
+  var regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+  var $el = $(id);
+  let valid=regex.exec($el.val());
+
+  setElementValidity(id, valid, msg);
+
+  return valid;
+}
+
+
 function validatePhoneNumber(id, msg) {
-	let re = "/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im"
-	let valid = re.exec(phoneInput.value);
-	
-	setElementValidity(id, valid, msg);
+  var regex = /^(1?(-?\d{3})-?)?(\d{3})(-?\d{4})$/
+
+  var $el = $(id);
+  let valid = regex.test($el.val());
+
+  $el.mask("000-000-0000")
+
+  setElementValidity(id, valid, msg);
+
+  return valid;
 }
 
 function validateCheckboxGroup(fieldName, message) {
   let valid=false;
 
-  //TODO
-  //Validate whether any of the checkboxes are checked. set 'valid' to true if checked
-  var placesFound = $(".whereFound input:checkbox");
-  for (var checkbox of placesFound) { validateCheckbox(checkbox) }
+  let $field = $(fieldName);
+  let groupName = $field.attr("name");
 
-  function validateCheckbox(checkbox) {
-    if (checkbox.checked == true){
-      valid = true;
-    }
+  if($(`:input[name=${groupName}]`).is(":checked")){
+    valid=true;
   }
 
   setElementValidity(fieldName, valid, message);

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
    initValidation("#myform");   //in validation.js, should set up submit event handler
 
    //initialize any of your button or other event handlers
@@ -44,6 +45,7 @@ function submitForm() {
           getWhereFound()))
         renderTable(table, visitors);
         showList();
+
       } else {
         validateForm();
       }
@@ -80,11 +82,10 @@ function deleteVisitor(id) {
    //calls view 'renderTable'
    //calls view 'showTable'
    if(confirm("Are you sure you want to delete this user?")){
-     console.log("Clicked!");
      modelDeleteVisitor(id);
      renderTable(table, visitors);
-     addDeleteListeners();
      showList();
+
    }
 }
 
@@ -103,5 +104,6 @@ function editVisitor(id) {
   $("#phone").val(visitor.phone);
 
   modelDeleteVisitor(id)
+
 
 }

@@ -62,8 +62,8 @@ Reflection:
 
 
   <div id="visitor-section-container" class="hidden">
-    <h2 id="visitors-header">Visitors</h2>
-    <div id="visitors" class="hidden">
+    <h1 id="visitors-header">Visitors</h1>
+    <div id="visitors" class="hidden flex">
       <table id="visitorTable">
         <thead id="tableHeader">
           <tr>
@@ -74,15 +74,12 @@ Reflection:
           </tr>
         </thead>
       </table>
-      <button id="addButton" href="#visitor-section-container">Add Visitor</button>
+      <button id="addButton" class="sectionBtn" href="#visitor-section-container">Add Visitor</button>
 
     </div>
     <div id="form-container">
       <form id="myform" novalidate>
-        <h1>Visitor form</h1>
-        <div class="successMsg hidden">
-          Thank you for logging your visit!
-        </div>
+        <h2>Update Visitor</h2>
         <ul class="flex">
           <li class="section-display">
             <label for="first-name">First Name</label>
@@ -163,8 +160,9 @@ Reflection:
           </li>
         </ul>
       </form>
+
     </div>
-    <button id="closeVisitors">Close visitor book</button>
+<button id="closeVisitors" class="sectionBtn flex">Close visitor book</button>
 
   </div>
   <script src="js/validation.js"></script>

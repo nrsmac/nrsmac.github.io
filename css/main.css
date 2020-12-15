@@ -16,6 +16,9 @@ in a zero grade, a permanent record on file and possibly immediate failure of th
   --oxford-blue: #0a122aff;
   --cadet: #5c6b73ff;
   --cultured: #fbfaf8ff;
+  --battleship-grey: #848C8Eff;
+  --alabaster: #F2EDE3ff;
+  --eggshell: #ECE4D5ff;
   --bone: #e7decdff;
   --international-orange-engineering: #ba1200ff;
 }
@@ -171,7 +174,6 @@ figure img {
 
 
 form {
-  width: 600px;
   margin: auto;
 }
 
@@ -344,6 +346,26 @@ h1 {
   color: var(--cultured);
 }
 
+.sectionBtn {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  background-color: var(--oxford-blue);
+  color: var(--cultured);
+  border-style: none;
+  text-transform: uppercase;
+  font-family: didot;
+  font-size: 17px;
+  border-radius: 7px;
+  transition: transform .2s, background-color, 1s, color 1s;
+}
+
+.sectionBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--international-orange-engineering);
+  color: var(--cultured);
+}
+
 .errorMsg {
   color: var(--international-orange-engineering);
   flex-grow: 0;
@@ -372,6 +394,7 @@ input:invalid ~ div {
 
 table {
   width: 100%;
+  border-collapse: collapse;
 }
 
 table td, th {
@@ -379,11 +402,29 @@ table td, th {
   padding:5px;
 }
 
+table tr{
+  background-color: var(--egshell);
+}
+
+tr:nth-child(even) {
+  background-color: var(--alabaster);
+}
+
+table th {
+  background-color: var(--oxford-blue);
+  color:var(--cultured);
+}
+
+table tr:hover{
+  background-color: var(--battleship-grey);
+  color: var(--cultured);
+}
+
 table td {
   text-align: left;
 }
 
-.actionsColumn {
+table .actionsColumn {
   text-align: center;
 }
 

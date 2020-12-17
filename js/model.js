@@ -11,18 +11,6 @@ class Visitor {
     this.phone=phone;
     this.methodFound = methodFound;
   }
-
-  getName() {
-    return this.firstName + " " + this.lastName;
-  }
-
-  getAddress() {
-    return `${this.address}<br>${this.city}, ${this.state} ${this.zip}`
-  }
-
-  getContact() {
-    return `${this.email}<br>${this.phone}`
-  }
 }
 
 let visitors = [
@@ -36,11 +24,8 @@ function modelAddVisitor(visitor) {//adds new visitor object to your array
 }
 
 function modelDeleteVisitor(id) {//removes vi;
-
   let foundVisitor = findVisitor(id);
-  if (foundVisitor) {
-    visitors.splice(visitors.indexOf(foundVisitor), visitors.indexOf(foundVisitor) + 1);
-  }
+  visitors.splice(visitors.indexOf(foundVisitor), visitors.indexOf(foundVisitor) + 1);
 }
 
 function findVisitor(id) {//returns visitor object with given 'id' from array

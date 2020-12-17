@@ -36,9 +36,9 @@ function renderTable(containerId, visitors) { //renders table from global visito
     if ($(`#item${item.id}`).length == 0) {
       let currentRow = containerId.append(`<tr id="item${item.id}""></tr>`);
       $(`#item${item.id}`).append(`
-          <td>${item.getName()}</td>
-          <td>${item.getAddress()}</td>
-          <td>${item.getContact()}</td>
+          <td>${item.firstName}" "${item.lastName}</td>
+          <td>${item.address}<br>${item.city}, ${item.state} ${item.zip}</td>
+          <td>${item.email}<br>${item.phone}</td>
           <td class=".actionsColumn">
             <a href="#visitor-section-container", onClick="deleteVisitor(${item.id})">Delete</a>
             <a href="#visitor-section-container", onClick="editVisitor(${item.id})">Edit</a>

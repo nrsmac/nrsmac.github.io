@@ -1,7 +1,11 @@
 $(document).ready(function(){
-
-
    initValidation("#myform");   //in validation.js, should set up submit event handler
+
+   if (!localStorage.visitors) { //
+     localStorage.visitors = JSON.stringify(visitors);
+   } else {
+     visitors = JSON.parse(localStorage.visitors);
+   }
 
    //initialize any of your button or other event handlers
    $("#formSubmit").click(submitForm);
@@ -21,6 +25,7 @@ function loadVisitors() {
    showList();
    renderTable(table, visitors);
    showList();
+
 }
 
 function submitForm() {
@@ -45,6 +50,7 @@ function submitForm() {
           getWhereFound()))
         renderTable(table, visitors);
         showList();
+        localStorage.visitors = JSON.stringify(visitors);
 
       } else {
         validateForm();
@@ -68,6 +74,7 @@ function addVisitor(visitor) {
   initValidation("#myform");
   clearForm();
   showForm();
+
 }
 
 function cancelEntry() {
@@ -85,7 +92,7 @@ function deleteVisitor(id) {
      modelDeleteVisitor(id);
      renderTable(table, visitors);
      showList();
-
+     localStorage.visitors = JSON.stringify(visitors);
    }
 }
 
@@ -104,6 +111,5 @@ function editVisitor(id) {
   $("#phone").val(visitor.phone);
 
   modelDeleteVisitor(id)
-
 
 }

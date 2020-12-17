@@ -30,8 +30,10 @@ in a zero grade, a permanent record on file and possibly immediate failure of th
 
 body{
   background-color: var(--bone);
+   background-image: linear-gradient(to right,var(--cadet), var(--cultured));
   font-family: didot;
   color: var(--cadet)
+  height:100%;
 }
 
 #license {
@@ -408,6 +410,10 @@ table tr{
 
 tr:nth-child(even) {
   background-color: var(--alabaster);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--cultured);
 }
 
 table th {
